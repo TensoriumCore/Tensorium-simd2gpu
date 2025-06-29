@@ -14,7 +14,7 @@ SDK=$(xcrun --show-sdk-path)
 for CPP in tensorium_export/*_tensorium_gpu.cpp; do
   LL=${CPP%.cpp}.ll
 
-  /opt/local/libexec/llvm-20/bin/clang++ -msse2 \
+  /opt/local/libexec/llvm-20/bin/clang++  -S -emit-mlir -msse2 \
     -isystem "$SDK/usr/include" \
     -emit-llvm -S "$CPP" -o "$LL"
 

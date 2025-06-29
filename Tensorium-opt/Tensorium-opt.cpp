@@ -20,7 +20,7 @@
 #include "Tensorium/TensoriumOpsDialect.cpp.inc"
 #include "../lib/Tensorium/Affine/AffineUnroll.h"
 #include "mlir/Dialect/Affine/IR/AffineOps.h"
-
+#include "mlir/Dialect/LLVMIR/LLVMDialect.h"
 
 int main(int argc, char **argv) {
   mlir::registerAllPasses();
@@ -37,6 +37,7 @@ int main(int argc, char **argv) {
   registry.insert<mlir::linalg::LinalgDialect>();
   registry.insert<mlir::memref::MemRefDialect>();
   registry.insert<mlir::func::FuncDialect>();
+  registry.insert<mlir::LLVM::LLVMDialect>(); 
 
   return mlir::asMainReturnCode(
       mlir::MlirOptMain(argc, argv, "Tensorium optimizer driver\n", registry));
