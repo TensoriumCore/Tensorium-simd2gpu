@@ -1,0 +1,2 @@
+add_subdirectory(Tensorium)
+add_subdirectory(CompilerHandler)
