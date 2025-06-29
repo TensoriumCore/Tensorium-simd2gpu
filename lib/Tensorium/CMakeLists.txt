@@ -8,3 +8,4 @@ add_mlir_dialect_library(MLIRTensorium
   LINK_LIBS PUBLIC
     MLIRIR
 )
+add_subdirectory(Affine)

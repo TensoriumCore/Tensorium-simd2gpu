@@ -18,17 +18,22 @@
 #include "mlir/Dialect/Tensor/IR/Tensor.h"
 #include "Tensorium/TensoriumDialect.h"
 #include "Tensorium/TensoriumOpsDialect.cpp.inc"
+#include "../lib/Tensorium/Affine/AffineUnroll.h"
+#include "mlir/Dialect/Affine/IR/AffineOps.h"
+
 
 int main(int argc, char **argv) {
   mlir::registerAllPasses();
   // TODO: Register tensorium passes here.
 
+  mlir::PassRegistration<tensorium::AffineUnrollPass>();
   mlir::DialectRegistry registry;
   registry.insert<mlir::tensorium::TensoriumDialect>();
   registry.insert<mlir::func::FuncDialect>();
   registry.insert<mlir::arith::ArithDialect>();
   registry.insert<mlir::math::MathDialect>();
   registry.insert<mlir::tensor::TensorDialect>();
+  registry.insert<mlir::affine::AffineDialect>();
   registry.insert<mlir::linalg::LinalgDialect>();
   registry.insert<mlir::memref::MemRefDialect>();
   registry.insert<mlir::func::FuncDialect>();
