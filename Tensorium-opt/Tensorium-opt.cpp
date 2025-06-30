@@ -21,6 +21,7 @@
 #include "../lib/Tensorium/Affine/AffineUnroll.h"
 #include "mlir/Dialect/Affine/IR/AffineOps.h"
 #include "mlir/Dialect/LLVMIR/LLVMDialect.h"
+#include "mlir/Dialect/gpu/GPUDialect.h"
 
 int main(int argc, char **argv) {
   mlir::registerAllPasses();
@@ -37,7 +38,8 @@ int main(int argc, char **argv) {
   registry.insert<mlir::linalg::LinalgDialect>();
   registry.insert<mlir::memref::MemRefDialect>();
   registry.insert<mlir::func::FuncDialect>();
-  registry.insert<mlir::LLVM::LLVMDialect>(); 
+  registry.insert<mlir::LLVM::LLVMDialect>();
+  registry.insert<mlir::gpu::GPUDialect>();
 
   return mlir::asMainReturnCode(
       mlir::MlirOptMain(argc, argv, "Tensorium optimizer driver\n", registry));
