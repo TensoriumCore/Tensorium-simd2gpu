@@ -6,7 +6,6 @@
 This component is part of the [Tensorium Foundation](https://github.com/TensoriumCore), whose goal is to simplify and accelerate tensor-based computations in numerical physics, with a focus on general relativity.
 
 ## Features
-
 - Translation of AVX (and potentially SSE/NEON) intrinsics into MLIR `vector` and `memref` operations
 - Intermediate representation suitable for targeting GPU backends (CUDA, Metal)
 - Integration with Clang plugins via `#pragma tensorium target(gpu)`
