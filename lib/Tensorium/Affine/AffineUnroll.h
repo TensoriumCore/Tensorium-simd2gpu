@@ -1,5 +1,4 @@
 #pragma once
-
 #include "mlir/Pass/Pass.h"
 #include "mlir/Dialect/Func/IR/FuncOps.h"
 
@@ -12,7 +11,6 @@ struct AffineUnrollPass
   mlir::StringRef getDescription() const final { return "Unroll all affine.for loops in FuncOps"; }
 };
 
-// Factory pour usage avec PassManager ou registration dynamique
 std::unique_ptr<mlir::Pass> createAffineUnrollPass();
 
 } // namespace tensorium
