@@ -1,11 +1,8 @@
 #include "AffineUnroll.h"
-
-
 #include "mlir/Dialect/Affine/IR/AffineOps.h"
 #include "mlir/Dialect/Affine/LoopUtils.h"
 
 using namespace mlir;
-
 namespace tensorium {
 
 void AffineUnrollPass::runOnOperation() {
@@ -20,5 +17,4 @@ void AffineUnrollPass::runOnOperation() {
 std::unique_ptr<mlir::Pass> createAffineUnrollPass() {
   return std::make_unique<AffineUnrollPass>();
 }
-
 } // namespace tensorium
