@@ -6,10 +6,10 @@ cmake_minimum_required(VERSION 3.13.4)
 if(POLICY CMP0116)
   cmake_policy(SET CMP0116 OLD)
 endif()
+
 set(LLVM_DIR "/opt/local/libexec/llvm-20/lib/cmake/llvm")
 set(MLIR_DIR "/opt/local/libexec/llvm-20/lib/cmake/mlir")
 project(tensorium-dialect LANGUAGES CXX C)
-
 set(CMAKE_CXX_STANDARD 17 CACHE STRING "C++ standard to conform to")
 
 find_package(MLIR REQUIRED CONFIG)
@@ -23,11 +23,11 @@ set(MLIR_BINARY_DIR ${CMAKE_BINARY_DIR})
 
 list(APPEND CMAKE_MODULE_PATH "${MLIR_CMAKE_DIR}")
 list(APPEND CMAKE_MODULE_PATH "${LLVM_CMAKE_DIR}")
+
 include(TableGen)
 include(AddLLVM)
 include(AddMLIR)
 include(HandleLLVMOptions)
-
 include_directories(${LLVM_INCLUDE_DIRS})
 include_directories(${MLIR_INCLUDE_DIRS})
 include_directories(${PROJECT_SOURCE_DIR}/include)
@@ -38,8 +38,6 @@ add_definitions(${LLVM_DEFINITIONS})
 set(LLVM_LIT_ARGS "-sv" CACHE STRING "lit default options")
 list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/modules")
 include(sanitizers)
-
 add_subdirectory(include)
 add_subdirectory(lib)
-# add_subdirectory(test)
 add_subdirectory(Tensorium-opt)
